@@ -1,0 +1,110 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.6
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: May 23, 2015 at 02:43 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `getdata`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
+--
+
+CREATE TABLE `content` (
+  `id` int(255) NOT NULL auto_increment,
+  `subject` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `date` datetime NOT NULL,
+  `views` int(255) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `content`
+--
+
+INSERT INTO `content` (`id`, `subject`, `body`, `date`, `views`) VALUES
+(15, 'check lang, 1st blog pero ang body, XSS ang laman. :v', '<script> alert ("this is very simple noob XSS sample!")</script>', '2015-05-23 13:26:22', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `info`
+--
+
+CREATE TABLE `info` (
+  `pid` int(255) NOT NULL auto_increment,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `mi` varchar(255) NOT NULL,
+  `age` int(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY  (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+
+--
+-- Dumping data for table `info`
+--
+
+INSERT INTO `info` (`pid`, `fname`, `lname`, `mi`, `age`, `gender`, `address`, `username`, `password`) VALUES
+(27, 'ronel', 'llarenas', 'bugarin', 22, 'Male', 'hinigaran', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(28, 'kalokalike ni dora', 'sa panasia', 'tupad ko p', 24, 'Femal', 'bacolod', 'dora', '7ec4fa89d0c005d7b155848254f5e7ef0897d95b');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `prodid` int(11) NOT NULL auto_increment,
+  `prodname` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  PRIMARY KEY  (`prodid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`prodid`, `prodname`, `description`, `photo`) VALUES
+(21, 'milk tea', 'masarap pampawala ng problem pag wala ka na, eh di wla kna prob. :v', '1432387433_11165131_10202876716557344_5961387083006962507_n.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `session_id` int(255) NOT NULL auto_increment,
+  `userid` int(33) NOT NULL,
+  `username` varchar(22) NOT NULL,
+  `ip_addr` varchar(66) NOT NULL,
+  `session_start` varchar(100) NOT NULL,
+  `session_end` varchar(100) NOT NULL,
+  PRIMARY KEY  (`session_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`session_id`, `userid`, `username`, `ip_addr`, `session_start`, `session_end`) VALUES
+(64, 27, 'admin', '127.0.0.1', '23 May 2015 @ 13:20:16', '23 May 2015 @ 13:26:49'),
+(65, 28, 'dora', '127.0.0.1', '23 May 2015 @ 13:24:23', '23 May 2015 @ 13:24:44'),
+(66, 27, 'admin', '127.0.0.1', '23 May 2015 @ 13:24:57', '23 May 2015 @ 13:26:49'),
+(67, 28, 'dora', '127.0.0.1', '23 May 2015 @ 13:26:55', '');
